@@ -8,9 +8,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.dhruv.guide.MainActivity$PlaceholderFragment" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <AutoCompleteTextView
+        android:id="@+id/AutoCompleteTextView1"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/hint_contact_name" />
+
+    <ListView
+        android:id="@+id/phone_contacts"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/AutoCompleteTextView1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/AutoCompleteTextView1"
+        android:layout_below="@+id/AutoCompleteTextView1" >
+
+    </ListView>
 
 </RelativeLayout>

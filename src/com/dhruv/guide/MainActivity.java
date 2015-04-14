@@ -5,6 +5,9 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
+
+
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -50,7 +53,7 @@ import com.dhruv.guide.SettingsFragment.SettingsState;
 
 
 
-public class MainActivity extends Activity implements ServiceConnection {
+public class MainActivity extends Activity implements ScannerCallback, ServiceConnection,SettingsState {
 	private final static String FRAGMENT_KEY= "com.dhruv.guide.MainActivity.FRAGMENT_KEY";
 	private final static int REQUEST_ENABLE_BT= 0;
 	private MetaWearController metaWearController;
