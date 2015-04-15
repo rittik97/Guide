@@ -1,3 +1,6 @@
+/*
+ * Copyright 2014 MbientLab Inc. All rights reserved.
+ */
 package com.dhruv.guide;
 
 import java.util.Timer;
@@ -5,31 +8,41 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
-
+import com.mbientlab.metawear.api.MetaWearBleService;
+import com.mbientlab.metawear.api.MetaWearController;
+import com.mbientlab.metawear.api.Module;
+import com.mbientlab.metawear.api.controller.Accelerometer;
+import com.mbientlab.metawear.api.controller.Accelerometer.Axis;
+import com.mbientlab.metawear.api.controller.Accelerometer.MovementData;
+import com.mbientlab.metawear.api.controller.Accelerometer.TapType;
+import com.mbientlab.metawear.api.controller.MechanicalSwitch;
+import com.dhruv.guide.MWScannerFragment.ScannerCallback;
+import com.dhruv.guide.SettingsFragment.SettingsState;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
-import android.bluetooth.BluetoothAdapter;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.DialogInterface;
 import android.database.Cursor;
+import android.os.Bundle;
+import android.os.IBinder;
 import static android.provider.ContactsContract.CommonDataKinds.Phone.*;
+
+
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -41,22 +54,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.mbientlab.metawear.api.MetaWearBleService;
-import com.mbientlab.metawear.api.MetaWearController;
-import com.mbientlab.metawear.api.Module;
-import com.mbientlab.metawear.api.controller.Accelerometer;
-import com.mbientlab.metawear.api.controller.Accelerometer.Axis;
-import com.mbientlab.metawear.api.controller.Accelerometer.MovementData;
-import com.mbientlab.metawear.api.controller.MechanicalSwitch;
-import com.dhruv.guide.MWScannerFragment.ScannerCallback;
-import com.dhruv.guide.SettingsFragment.SettingsState;
-
-
+/*
+ * Main activity that controls the app
+ * @author Eric Tsai
+ */
 
 public class MainActivity extends Activity implements ScannerCallback, ServiceConnection,SettingsState {
 	private final static String FRAGMENT_KEY= "com.dhruv.guide.MainActivity.FRAGMENT_KEY";
 	private final static int REQUEST_ENABLE_BT= 0;
-	private MetaWearController metaWearController;
+	//private MetaWearController metaWearController;
+	
 	private PlaceholderFragment mainFragment= null;
 	private DeviceInfoFragment deviceInfoFragment;
 	private MetaWearBleService mwService= null;
@@ -140,6 +147,14 @@ public class MainActivity extends Activity implements ScannerCallback, ServiceCo
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -206,6 +221,14 @@ public class MainActivity extends Activity implements ScannerCallback, ServiceCo
 	public int getShakeMessage() {
 		return mainFragment.shakeMsgPosition;
 	}
+
+
+	public void setTapMessage(int position) {
+		mainFragment.textMsgPosition=position;
+	}
+
+
+
 
 	private static class ContactInfo {
 		public String name;
@@ -302,7 +325,9 @@ public class MainActivity extends Activity implements ScannerCallback, ServiceCo
 
 					accelCtrllr= ((Accelerometer) mwController.getModuleController(Module.ACCELEROMETER));
 					accelCtrllr.enableShakeDetection(Axis.X);
+					accelCtrllr.enableTapDetection(TapType.SINGLE_TAP, Axis.Z);
 					accelCtrllr.startComponents();
+
 
 					Toast.makeText(getActivity(), R.string.toast_connected, Toast.LENGTH_SHORT).show();
 				}
@@ -448,8 +473,20 @@ public class MainActivity extends Activity implements ScannerCallback, ServiceCo
 						}
 					}
 				}
+			}).addModuleCallback(new Accelerometer.Callbacks(){
+				@Override
+				public void doubleTapDetected(MovementData moveData) {
+					if (saviours != null && saviours.getCount() > 0) {
+						sendText(true);
+					} else {
+						Toast.makeText(getActivity(), R.string.error_no_contact, Toast.LENGTH_SHORT).show();
+					}
+				}
+
+
 			});
 		}
+
 
 		@Override
 		public void onServiceDisconnected(ComponentName name) {

@@ -20,8 +20,7 @@
     <ListView
         android:id="@+id/phone_contacts"
         android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/AutoCompleteTextView1"
+        android:layout_height="wrap_content"        
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/AutoCompleteTextView1"
         android:layout_below="@+id/AutoCompleteTextView1" >

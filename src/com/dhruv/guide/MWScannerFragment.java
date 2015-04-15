@@ -1,7 +1,16 @@
+/*
+ * Copyright 2014 MbientLab Inc. All rights reserved.
+ */
+
 package com.dhruv.guide;
 
 import java.util.Locale;
 
+import android.app.Activity;
+import android.app.DialogFragment;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,12 +25,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.app.Activity;
-import android.app.DialogFragment;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
 
+/* Scans and reports discovered BLE Devices
+ *@author Eric Tsai */
 
 
 public class MWScannerFragment extends DialogFragment {
@@ -163,7 +169,7 @@ public class MWScannerFragment extends DialogFragment {
 			}
 		});
 
-		//Main activity has already checked a Bluetooth manager exists
+		//Main activity has already checked a bluetooth manager exists
 		mBluetoothAdapter= ((BluetoothManager) getActivity().getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
 		startBleScan();
 	}
