@@ -324,7 +324,7 @@ public class MainActivity extends Activity implements ScannerCallback, ServiceCo
 					switchCtrllr.enableNotification();
 
 					accelCtrllr= ((Accelerometer) mwController.getModuleController(Module.ACCELEROMETER));
-					accelCtrllr.enableShakeDetection(Axis.X);
+					accelCtrllr.enableShakeDetection(Axis.Y);
 					accelCtrllr.enableTapDetection(TapType.DOUBLE_TAP, Axis.Z);
 					accelCtrllr.startComponents();
 
