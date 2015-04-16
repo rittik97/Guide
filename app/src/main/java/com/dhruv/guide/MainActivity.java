@@ -324,8 +324,9 @@ public class MainActivity extends Activity implements ScannerCallback, ServiceCo
 					switchCtrllr.enableNotification();
 
 					accelCtrllr= ((Accelerometer) mwController.getModuleController(Module.ACCELEROMETER));
-					accelCtrllr.enableShakeDetection(Axis.Y);
-					accelCtrllr.enableTapDetection(TapType.DOUBLE_TAP, Axis.Z);
+					accelCtrllr.enableShakeDetection(Axis.X);
+					accelCtrllr.enableTapDetection(TapType.SINGLE_TAP, Axis.Z);
+                    accelCtrllr.enableFreeFallDetection();
 					accelCtrllr.startComponents();
 
 
@@ -475,7 +476,7 @@ public class MainActivity extends Activity implements ScannerCallback, ServiceCo
 				}
 			}).addModuleCallback(new Accelerometer.Callbacks(){
 				@Override
-				public void doubleTapDetected(MovementData moveData) {
+				public void singleTapDetected(MovementData moveData) {
 					if (saviours != null && saviours.getCount() > 0) {
 						sendText(true);
 					} else {
@@ -484,7 +485,16 @@ public class MainActivity extends Activity implements ScannerCallback, ServiceCo
 				}
 
 
-			});
+			}).addModuleCallback(new Accelerometer.Callbacks(){
+                @Override
+                public void movementDetected(MovementData moveData ) {
+                    if (saviours != null && saviours.getCount() > 0) {
+                        sendText(true);
+                    } else {
+                        Toast.makeText(getActivity(), R.string.error_no_contact, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
 		}
 
 
