@@ -1,0 +1,3 @@
+C:\Users\suresh\Documents\GitHub\Guide1\app\build\intermediates\classes\debug
+C:\Users\suresh\Documents\GitHub\Guide1\app\build\intermediates\pre-dexed\debug\metawearapi-a9d74f3581228fd783b2601ce025d75509b8c594.jar
+C:\Users\suresh\Documents\GitHub\Guide1\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-4ccce36e31ce079a9ee9ff2b6b2a589724ce9b9f.jar

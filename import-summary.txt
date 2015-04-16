@@ -1,0 +1,90 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* ic_launcher-web.png
+* pom.xml
+* proguard-project.txt
+* target\
+* target\classes\
+* target\classes\com\
+* target\classes\com\dhruv\
+* target\classes\com\dhruv\guide\
+* target\classes\com\dhruv\guide\DeviceInfoFragment$1.class
+* target\classes\com\dhruv\guide\DeviceInfoFragment$2.class
+* target\classes\com\dhruv\guide\DeviceInfoFragment$3.class
+* target\classes\com\dhruv\guide\DeviceInfoFragment$4.class
+* target\classes\com\dhruv\guide\DeviceInfoFragment.class
+* target\classes\com\dhruv\guide\MWScannerFragment$1$1.class
+* target\classes\com\dhruv\guide\MWScannerFragment$1.class
+* target\classes\com\dhruv\guide\MWScannerFragment$2.class
+* target\classes\com\dhruv\guide\MWScannerFragment$3.class
+* target\classes\com\dhruv\guide\MWScannerFragment$4.class
+* target\classes\com\dhruv\guide\MWScannerFragment$BLEDeviceListAdapter$ViewHolder.class
+* target\classes\com\dhruv\guide\MWScannerFragment$BLEDeviceListAdapter.class
+* target\classes\com\dhruv\guide\MWScannerFragment$BtDeviceRssi.class
+* target\classes\com\dhruv\guide\MWScannerFragment$ScannerCallback.class
+* target\classes\com\dhruv\guide\MWScannerFragment.class
+* target\classes\com\dhruv\guide\MainActivity$1.class
+* target\classes\com\dhruv\guide\MainActivity$ContactInfo.class
+* target\classes\com\dhruv\guide\MainActivity$ContactListAdapter$ViewHolder.class
+* target\classes\com\dhruv\guide\MainActivity$ContactListAdapter.class
+* target\classes\com\dhruv\guide\MainActivity$PlaceholderFragment$1.class
+* target\classes\com\dhruv\guide\MainActivity$PlaceholderFragment$2.class
+* target\classes\com\dhruv\guide\MainActivity$PlaceholderFragment$3.class
+* target\classes\com\dhruv\guide\MainActivity$PlaceholderFragment$4.class
+* target\classes\com\dhruv\guide\MainActivity$PlaceholderFragment$5$1.class
+* target\classes\com\dhruv\guide\MainActivity$PlaceholderFragment$5.class
+* target\classes\com\dhruv\guide\MainActivity$PlaceholderFragment$6.class
+* target\classes\com\dhruv\guide\MainActivity$PlaceholderFragment.class
+* target\classes\com\dhruv\guide\MainActivity.class
+* target\classes\com\dhruv\guide\ModuleFragment$MetaWearManager.class
+* target\classes\com\dhruv\guide\ModuleFragment.class
+* target\classes\com\dhruv\guide\SettingsFragment$1.class
+* target\classes\com\dhruv\guide\SettingsFragment$2.class
+* target\classes\com\dhruv\guide\SettingsFragment$SettingsState.class
+* target\classes\com\dhruv\guide\SettingsFragment.class
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:19.1.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* libs\metawearapi.jar => app\libs\metawearapi.jar
+* lint.xml => app\lint.xml
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

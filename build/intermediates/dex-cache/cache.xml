@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\suresh\Documents\GitHub\Guide1\app\libs\metawearapi.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1325b279eeffa0fe40d2c229fc8bbafb9eb1ae32">
+        <dex dex="C:\Users\suresh\Documents\GitHub\Guide1\app\build\intermediates\pre-dexed\debug\metawearapi-a9d74f3581228fd783b2601ce025d75509b8c594.jar" />
+    </item>
+    <item
+        jar="E:\Android ADK\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="C:\Users\suresh\Documents\GitHub\Guide1\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-4ccce36e31ce079a9ee9ff2b6b2a589724ce9b9f.jar" />
+    </item>
+
+</items>

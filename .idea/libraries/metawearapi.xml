@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="metawearapi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/metawearapi.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
